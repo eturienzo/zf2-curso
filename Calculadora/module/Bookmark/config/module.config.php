@@ -5,7 +5,7 @@ return array(
             'bookmark\account\index' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/account/',
+                    'route'    => '/bookmark/',
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'index',
@@ -15,7 +15,7 @@ return array(
             'bookmark\account\view' => array(
                 'type'              => 'Segment',
                 'options'           => array(
-                    'route'         => '/account/view/id/[:id]/',
+                    'route'         => '/bookmark/view/id/[:id]/',
                     'constraints'   => array(
                         'id' => '[0-9]+',
                     ),
@@ -28,7 +28,7 @@ return array(
             'bookmark\account\create' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/account/create/',
+                    'route'    => '/bookmark/create/',
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'create',
@@ -38,7 +38,7 @@ return array(
             'bookmark\account\doCreate' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/account/do-create/',
+                    'route'    => '/bookmark/do-create/',
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'doCreate',
@@ -48,7 +48,7 @@ return array(
             'bookmark\account\delete' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/account/delete/id/[:id]/',
+                    'route'    => '/bookmark/delete/id/[:id]/',
                     'constraints' => array(
                         'id' => '[0-9]+',
                     ),
@@ -61,7 +61,7 @@ return array(
             'bookmark\account\update' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/account/update/id/[:id]/',
+                    'route'    => '/bookmark/update/id/[:id]/',
                     'constraints' => array(
                         'id' => '[0-9]+',
                     ),
@@ -74,7 +74,7 @@ return array(
             'bookmark\account\doUpdate' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/account/do-update/',
+                    'route'    => '/bookmark/do-update/',
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'doUpdate',

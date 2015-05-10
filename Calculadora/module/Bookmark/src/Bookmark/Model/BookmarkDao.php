@@ -68,10 +68,21 @@ class BookmarkDao implements BookmarkDaoInterface
             $row['modifiedAt']);
     }
 
+    function validateExistUrl($url){
+        $stmt= $this->db->createStatement('SELECT url FROM bookmarks WHERE url = ?');
+        $resultSet=$stmt->execute($url);
+        if (($resultSet->getAffectedRows())>0)
+            return false;
+        else
+            return true;
+    }
+
     public function save($data)
     {
-        $stmt = $this->db->createStatement('INSERT INTO bookmarks VALUES (NULL, ?, ?, ?, NULL, ?)');
-        $stmt->execute([$data['url'], $data['title'], $data['description'], $data['modifiedAt']]);
+        if (validateExistUrl($data['url'])) {
+            $stmt = $this->db->createStatement('INSERT INTO bookmarks VALUES (NULL, ?, ?, ?, NULL, NULL)');
+            $stmt->execute([$data['url'], $data['title'], $data['description']]);
+        }
     }
 
     public function delete($id)
@@ -82,8 +93,10 @@ class BookmarkDao implements BookmarkDaoInterface
 
     public function update($data)
     {
-        $stmt = $this->db->createStatement('UPDATE bookmarks SET url = ?, title = ?, description = ?,
-            modifiedAt =? WHERE id = ?');
-        $stmt->execute([$data['url'], $data['title'], $data['description'], $data['modifiedAt'], $data['id']]);
+        $stmt = $this->db->createStatement('UPDATE bookmarks SET url = ?, title = ?, description = ?
+             WHERE id = ?');
+        $stmt->execute([$data['url'], $data['title'], $data['description'],  $data['id']]);
     }
+
+
 }

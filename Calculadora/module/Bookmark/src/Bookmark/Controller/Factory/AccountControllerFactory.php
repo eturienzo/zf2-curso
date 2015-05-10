@@ -9,7 +9,7 @@
 namespace Bookmark\Controller\Factory;
 
 
-use User\Controller\AccountController;
+use Bookmark\Controller\AccountController;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -26,7 +26,7 @@ class AccountControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $sm = $serviceLocator->getServiceLocator();
-        $userDao = $sm->get('Bookmark\Model\BookmarkDao');
+        $bookmarkDao = $sm->get('Bookmark\Model\BookmarkDao');
 
         return new AccountController($bookmarkDao);
     }

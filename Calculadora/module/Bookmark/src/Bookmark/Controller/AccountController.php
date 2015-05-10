@@ -26,7 +26,7 @@ class AccountController extends AbstractActionController
     public function indexAction()
     {
         $this->layout()->title  = 'List Bookmarks';
-        $users                  = $this->model->findAll();
+        $bookmarks                  = $this->model->findAll();
 
         return ['bookmarks' => $bookmarks];
     }
@@ -65,7 +65,7 @@ class AccountController extends AbstractActionController
     {
         $this->layout()->title = 'Update Bookmark';
 
-        $user = $this->model->getById($this->params()->fromRoute('id'));
+        $bookmark = $this->model->getById($this->params()->fromRoute('id'));
 
         return ['bookmark' => $bookmark];
     }

@@ -5,7 +5,7 @@ return array(
             'user\account\index' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/account/',
+                    'route'    => '/user/',
                     'defaults' => array(
                         'controller' => 'User\Controller\Account',
                         'action'     => 'index',
@@ -15,7 +15,7 @@ return array(
             'user\account\view' => array(
                 'type'              => 'Segment',
                 'options'           => array(
-                    'route'         => '/account/view/id/[:id]/',
+                    'route'         => '/user/view/id/[:id]/',
                     'constraints'   => array(
                         'id' => '[0-9]+',
                     ),
@@ -28,7 +28,7 @@ return array(
             'user\account\create' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/account/create/',
+                    'route'    => '/user/create/',
                     'defaults' => array(
                         'controller' => 'User\Controller\Account',
                         'action'     => 'create',
@@ -38,7 +38,7 @@ return array(
             'user\account\doCreate' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/account/do-create/',
+                    'route'    => '/user/do-create/',
                     'defaults' => array(
                         'controller' => 'User\Controller\Account',
                         'action'     => 'doCreate',
@@ -48,7 +48,7 @@ return array(
             'user\account\delete' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/account/delete/id/[:id]/',
+                    'route'    => '/user/delete/id/[:id]/',
                     'constraints' => array(
                         'id' => '[0-9]+',
                     ),
@@ -61,7 +61,7 @@ return array(
             'user\account\update' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/account/update/id/[:id]/',
+                    'route'    => '/user/update/id/[:id]/',
                     'constraints' => array(
                         'id' => '[0-9]+',
                     ),
@@ -74,7 +74,7 @@ return array(
             'user\account\doUpdate' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/account/do-update/',
+                    'route'    => '/user/do-update/',
                     'defaults' => array(
                         'controller' => 'User\Controller\Account',
                         'action'     => 'doUpdate',
