@@ -68,10 +68,11 @@ class BookmarkDao implements BookmarkDaoInterface
             $row['modifiedAt']);
     }
 
-    function validateExistUrl($url){
+    private function validateExistUrl($url){
         $stmt= $this->db->createStatement('SELECT url FROM bookmarks WHERE url = ?');
-        $resultSet=$stmt->execute($url);
-        if (($resultSet->getAffectedRows())>0)
+        $resultSet=$stmt->execute([$url]);
+        $count = $resultSet->count();
+        if ($count>0)
             return false;
         else
             return true;
@@ -79,7 +80,7 @@ class BookmarkDao implements BookmarkDaoInterface
 
     public function save($data)
     {
-        if (validateExistUrl($data['url'])) {
+        if ($this->validateExistUrl($data['url'])) {
             $stmt = $this->db->createStatement('INSERT INTO bookmarks VALUES (NULL, ?, ?, ?, NULL, NULL)');
             $stmt->execute([$data['url'], $data['title'], $data['description']]);
         }
