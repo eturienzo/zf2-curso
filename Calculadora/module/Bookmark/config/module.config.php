@@ -97,7 +97,8 @@ return array(
     ),
     'view_manager' => array(
         'template_map'              => array(
-            'bookmark/account/partial/form' => __DIR__ . '/../view/bookmark/account/partial/form.phtml',
+            'bookmark/account/partial/form-update' => __DIR__ . '/../view/bookmark/account/partial/form-update.phtml',
+            'bookmark/account/partial/form-create' => __DIR__ . '/../view/bookmark/account/partial/form-create.phtml',
         ),
         'template_path_stack'       => array(
             __DIR__ . '/../view',
