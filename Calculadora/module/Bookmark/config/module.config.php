@@ -86,11 +86,13 @@ return array(
     'service_manager' => array(
         'factories' => array(
             'Bookmark\Model\BookmarkDao'   => 'Bookmark\Model\Factory\BookmarkDaoFactory',
+            'Bookmark\Model\BookmarkDaoTableGateway' => 'Bookmark\Model\Factory\BookmarkDaoTableGatewayFactory',
         ),
     ),
     'controllers' => array(
         'factories' => array(
-            'Bookmark\Controller\Account' => 'Bookmark\Controller\Factory\AccountControllerFactory',
+    //        'Bookmark\Controller\Account' => 'Bookmark\Controller\Factory\AccountControllerFactory',
+            'Bookmark\Controller\Account' => 'Bookmark\Controller\Factory\AccountControllerTableGatewayFactory',
         ),
     ),
     'view_manager' => array(

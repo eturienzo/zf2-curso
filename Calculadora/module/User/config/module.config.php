@@ -5,7 +5,7 @@ return array(
             'user\account\index' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/user/',
+                    'route'    => '/account/',
                     'defaults' => array(
                         'controller' => 'User\Controller\Account',
                         'action'     => 'index',
@@ -15,7 +15,7 @@ return array(
             'user\account\view' => array(
                 'type'              => 'Segment',
                 'options'           => array(
-                    'route'         => '/user/view/id/[:id]/',
+                    'route'         => '/account/view/id/[:id]/',
                     'constraints'   => array(
                         'id' => '[0-9]+',
                     ),
@@ -28,7 +28,7 @@ return array(
             'user\account\create' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/user/create/',
+                    'route'    => '/account/create/',
                     'defaults' => array(
                         'controller' => 'User\Controller\Account',
                         'action'     => 'create',
@@ -38,7 +38,7 @@ return array(
             'user\account\doCreate' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/user/do-create/',
+                    'route'    => '/account/do-create/',
                     'defaults' => array(
                         'controller' => 'User\Controller\Account',
                         'action'     => 'doCreate',
@@ -48,7 +48,7 @@ return array(
             'user\account\delete' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/user/delete/id/[:id]/',
+                    'route'    => '/account/delete/id/[:id]/',
                     'constraints' => array(
                         'id' => '[0-9]+',
                     ),
@@ -61,7 +61,7 @@ return array(
             'user\account\update' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route'    => '/user/update/id/[:id]/',
+                    'route'    => '/account/update/id/[:id]/',
                     'constraints' => array(
                         'id' => '[0-9]+',
                     ),
@@ -74,7 +74,7 @@ return array(
             'user\account\doUpdate' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route'    => '/user/do-update/',
+                    'route'    => '/account/do-update/',
                     'defaults' => array(
                         'controller' => 'User\Controller\Account',
                         'action'     => 'doUpdate',
@@ -86,11 +86,13 @@ return array(
     'service_manager' => array(
         'factories' => array(
             'User\Model\UserDao'   => 'User\Model\Factory\UserDaoFactory',
+            'User\Model\UserDaoTableGateway' => 'User\Model\Factory\UserDaoTableGatewayFactory',
         ),
     ),
     'controllers' => array(
         'factories' => array(
-            'User\Controller\Account' => 'User\Controller\Factory\AccountControllerFactory',
+            //'User\Controller\Account' => 'User\Controller\Factory\AccountControllerFactory',
+            'User\Controller\Account' => 'User\Controller\Factory\AccountControllerTableGatewayFactory',
         ),
     ),
     'view_manager' => array(
