@@ -8,8 +8,13 @@
 
 namespace Bookmark\Model;
 
+use Zend\InputFilter\InputFilter;
+use Zend\InputFilter\InputFilterAwareInterface;
+use Zend\InputFilter\InputFilterInterface;
+use Zend\I18n\Filter\Alnum;
+use Zend\I18n\Filter\Alpha;
 
-class Bookmark
+class Bookmark implements InputFilterAwareInterface
 {
     private $id;
     private $url;
@@ -18,6 +23,8 @@ class Bookmark
     private $creationAt;
     private $modifiedAt;
 
+    //session6
+    private $inputFilter;
 
     function __construct($id = null, $url = null, $title = null, $description = null, $creationAt = null,
                          $modifiedAt = null )
@@ -141,5 +148,99 @@ class Bookmark
     public function setModifiedAt($modifiedAt)
     {
         $this->modifiedAt = $modifiedAt;
+    }
+
+    //session6
+
+    /**
+     * getArrayCopy
+     *
+     * Needed for use in form binding
+     *
+     * @return array
+     */
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
+    /**
+     * Set input filter
+     *
+     * @param  InputFilterInterface $inputFilter
+     *
+     * @return InputFilterAwareInterface
+     */
+    public function setInputFilter(InputFilterInterface $inputFilter)
+    {
+        throw new \Exception('Not used');
+    }
+    /**
+     * Retrieve input filter
+     *
+     * @return InputFilterInterface
+     */
+    public function getInputFilter()
+    {
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+            $inputFilter->add(array(
+                'name' => 'id',
+                'continue_if_empty' => true,
+            ));
+            $inputFilter->add(array(
+                'name' => 'creationAt',
+                'continue_if_empty' => true,
+            ));
+            $inputFilter->add(array(
+                'name' => 'modifiedAt',
+                'continue_if_empty' => true,
+            ));
+            $inputFilter->add(array(
+                'name' => 'url',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'StringTrim'), // clean blank spaces
+                    array('name' => 'StripTags'), // clean malicious code
+                    array('name' => 'StringToLower'),
+                ),
+                'validators' => array(
+                    array(
+                        'name' => 'Hostname',
+                        'options' => array(
+                            'allow'       => \Zend\Validator\Hostname::ALLOW_DNS, // Allow these hostnames
+                            'useIdnCheck' => true,  // Check IDN domains
+                            'useTldCheck' => true,  // Check TLD elements
+                            'ipValidator' => null,  // IP validator to use
+                        ),
+                    ),
+                    array(
+                        'name' => 'NotEmpty',
+                        'options' => array(
+                            'messages' => array(
+                                'isEmpty' => 'La Url es obligatoria',
+                            ),
+                        ),
+                    ),
+                ),
+            ));
+            $inputFilter->add(array(
+                'name' => 'title',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Alnum'),
+                ),
+            ));
+
+            $inputFilter->add(array(
+                'name' => 'description',
+                'required' => true,
+                'filters' => array(
+                    array('name' => 'Alnum'),
+                ),
+            ));
+            $this->inputFilter = $inputFilter;
+        }
+        return $this->inputFilter;
     }
 }
