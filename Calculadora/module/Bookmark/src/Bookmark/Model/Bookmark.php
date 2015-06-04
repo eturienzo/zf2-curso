@@ -11,8 +11,6 @@ namespace Bookmark\Model;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
-use Zend\I18n\Filter\Alnum;
-use Zend\I18n\Filter\Alpha;
 
 class Bookmark implements InputFilterAwareInterface
 {
@@ -205,15 +203,6 @@ class Bookmark implements InputFilterAwareInterface
                     array('name' => 'StringToLower'),
                 ),
                 'validators' => array(
-                    array(
-                        'name' => 'Hostname',
-                        'options' => array(
-                            'allow'       => \Zend\Validator\Hostname::ALLOW_DNS, // Allow these hostnames
-                            'useIdnCheck' => true,  // Check IDN domains
-                            'useTldCheck' => true,  // Check TLD elements
-                            'ipValidator' => null,  // IP validator to use
-                        ),
-                    ),
                     array(
                         'name' => 'NotEmpty',
                         'options' => array(

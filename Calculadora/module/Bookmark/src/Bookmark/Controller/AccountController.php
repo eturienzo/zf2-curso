@@ -85,7 +85,6 @@ class AccountController extends AbstractActionController
                 $data['url'] = $formData['url'];
                 $data['title'] = $formData['title'];
                 $data['description'] = $formData['description'];
-                $data['modifiedAt'] = date('Y-m-d H:i:s');
                 $this->model->save($data);
                 $this->redirect()->toRoute('bookmark\account\index');
             }
@@ -134,7 +133,36 @@ class AccountController extends AbstractActionController
 
     public function doUpdateAction()
     {
-        $this->model->update($this->params()->fromPost());
+        $request = $this->getRequest();
+
+        if ($request->isPost()) {
+            $form = new BookmarkForm();
+            $bookmarkEntity = new Bookmark();
+            $form->setInputFilter($bookmarkEntity->getInputFilter());
+            $form->setData($request->getPost());
+
+            if ($form->isValid()) {
+                $formData = $form->getData();
+                $data['id']         = $formData['id'];
+                $data['url'] = $formData['url'];
+                $data['title'] = $formData['title'];
+                $data['description'] = $formData['description'];
+
+                $this->model->update($data);
+                $this->redirect()->toRoute('bookmark\account\index');
+
+            }
+
+            $form->prepare();
+
+            $this->layout()->title = 'Update Bookmark - Error - Review your data';
+
+            // we reuse the create view
+            $view = new ViewModel(['form' => $form, 'isUpdate' => true]);
+            $view->setTemplate('bookmark/account/create.phtml');
+
+            return $view;
+        }
 
         $this->redirect()->toRoute('bookmark\account\index');
     }

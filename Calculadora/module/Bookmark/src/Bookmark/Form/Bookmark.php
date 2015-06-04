@@ -9,6 +9,7 @@
 namespace Bookmark\Form;
 
 use Zend\Form\Form;
+use Zend\Form\Element;
 
 class Bookmark extends Form
 {
@@ -29,13 +30,28 @@ class Bookmark extends Form
             'name' => 'modifiedAt',
             'type' => 'Hidden',
         ));
-        $this->add(array(
+
+        /*$url = new Element\Url('webpage-url');
+        $url->setName('url');
+
+        $this->add($url);*/
+       // $url = new Element\Url('webpage-url');
+        /*$this->add(array(
             'name' => 'url',
-            'type' => 'Url',
+            'type' => 'Zend\Form\Element\Url',
             'attributes' => array(
                 'required' => 'required',
             ),
+        ));*/
+
+        $this->add(array(
+            'name' => 'url',
+            'type' => 'Zend\Form\Element\Url',
+            'attributes' => array(
+                'required' => 'required'
+            )
         ));
+
         $this->add(array(
             'name' => 'title',
             'type' => 'Text',
