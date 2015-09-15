@@ -30,7 +30,7 @@ class AccountController extends AbstractActionController
 
     public function indexAction()
     {
-        $this->layout()->title  = 'List Bookmarks';
+        $this->layout()->title  = 'Lista Bookmarks';
         $bookmarks                  = $this->model->findAll();
 
         return ['bookmarks' => $bookmarks];
@@ -165,6 +165,10 @@ class AccountController extends AbstractActionController
         }
 
         $this->redirect()->toRoute('bookmark\account\index');
+    }
+    public function forbiddenAction()
+    {
+        return [];
     }
 }
 

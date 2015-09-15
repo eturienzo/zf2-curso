@@ -13,6 +13,7 @@
 
 return array(
     'application' => array(
-        'title' => 'Elena - ZF2 Course',
-    )
+        'name'      => 'ZF2_Course',
+        'title'     => 'Elena - ZF2 Course',
+    ),
 );

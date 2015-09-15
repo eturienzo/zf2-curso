@@ -2,39 +2,6 @@
 return array(
     'router' => array(
         'routes' => array(
-            'bookmark\login\login' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route'    => '/bookmark/login/',
-                    'defaults' => array(
-                        'controller' => 'Bookmark\Controller\Login',
-                        'action'     => 'login',
-                        'roles'      => ['guest'],
-                    ),
-                ),
-            ),
-            'bookmark\login\doLogin' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route'    => '/bookmark/do-login/',
-                    'defaults' => array(
-                        'controller' => 'Bookmark\Controller\Login',
-                        'action'     => 'doLogin',
-                        'roles'      => ['guest'],
-                    ),
-                ),
-            ),
-            'bookmark\login\logout' => array(
-                'type' => 'Literal',
-                'options' => array(
-                    'route'    => '/bookmark/logout/',
-                    'defaults' => array(
-                        'controller' => 'Bookmark\Controller\Login',
-                        'action'     => 'logout',
-                        'roles'      => ['admin', 'user'],
-                    ),
-                ),
-            ),
             'bookmark\account\index' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -42,6 +9,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'index',
+                        'roles'      => ['admin', 'user'],
                     ),
                 ),
             ),
@@ -55,6 +23,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'view',
+                        'roles'      => ['admin', 'user'],
                     ),
                 ),
             ),
@@ -65,6 +34,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'create',
+                        'roles'      => ['admin'],
                     ),
                 ),
             ),
@@ -75,6 +45,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'doCreate',
+                        'roles'      => ['admin'],
                     ),
                 ),
             ),
@@ -88,6 +59,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'delete',
+                        'roles'      => ['admin'],
                     ),
                 ),
             ),
@@ -101,6 +73,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'update',
+                        'roles'      => ['admin'],
                     ),
                 ),
             ),
@@ -111,20 +84,16 @@ return array(
                     'defaults' => array(
                         'controller' => 'Bookmark\Controller\Account',
                         'action'     => 'doUpdate',
+                        'roles'      => ['admin'],
                     ),
                 ),
             ),
         ),
     ),
     'service_manager' => array(
-        'aliases' => array(
-            'Zend\Authentication\AuthenticationService' => 'Bookmark\Service\Authentication', //needed for identity plugin
-        ),
         'factories' => array(
             'Bookmark\Model\BookmarkDao'   => 'Bookmark\Model\Factory\BookmarkDaoFactory',
             'Bookmark\Model\BookmarkDaoTableGateway' => 'Bookmark\Model\Factory\BookmarkDaoTableGatewayFactory',
-            'Bookmark\Service\AuthenticationStorage' => 'Bookmark\Service\Factory\AuthenticationStorageServiceFactory',
-            'Bookmark\Service\Authentication' => 'Bookmark\Service\Factory\AuthenticationServiceFactory',
         ),
     ),
     'controllers' => array(
