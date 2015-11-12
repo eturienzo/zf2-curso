@@ -6,6 +6,7 @@ return [
             'guest',
             'user',
             'admin',
+            'moderator',
         ],
     ],
 ];

@@ -73,7 +73,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'User\Controller\Users',
                         'action'     => 'update',
-                        'roles'      => ['admin'],
+                        'roles'      => ['admin', 'moderator'],
                     ),
                 ),
             ),
@@ -134,6 +134,7 @@ return array(
             'User\Form\User'                        => 'User\Form\Factory\UserFormFactory',
             'User\Form\Login'                       => 'User\Form\Factory\LoginFormFactory',
             'User\Service\Acl'                      => 'User\Service\Factory\AclServiceFactory',
+            'User\Provider\RoleProvider'            => 'User\Provider\Factory\RoleProviderFactory',
         ),
     ),
     'controllers' => array(
