@@ -73,7 +73,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'User\Controller\Users',
                         'action'     => 'update',
-                        'roles'      => ['admin'],
+                        'roles'      => ['admin', 'moderator'],
                     ),
                 ),
             ),
@@ -131,6 +131,10 @@ return array(
             'User\Model\UsersModel'                 => 'User\Model\Factory\UsersModelFactory',
             'User\Service\AuthenticationStorage'    => 'User\Service\Factory\AuthenticationStorageServiceFactory',
             'User\Service\Authentication'           => 'User\Service\Factory\AuthenticationServiceFactory',
+            'User\Form\User'                        => 'User\Form\Factory\UserFormFactory',
+            'User\Form\Login'                       => 'User\Form\Factory\LoginFormFactory',
+            'User\Service\Acl'                      => 'User\Service\Factory\AclServiceFactory',
+            'User\Provider\RoleProvider'            => 'User\Provider\Factory\RoleProviderFactory',
         ),
     ),
     'controllers' => array(

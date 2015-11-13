@@ -16,7 +16,6 @@
 
 namespace User\Service\Factory;
 
-
 use Zend\Authentication\Adapter\DbTable\CredentialTreatmentAdapter;
 use Zend\Authentication\AuthenticationService;
 use Zend\ServiceManager\FactoryInterface;
@@ -40,6 +39,7 @@ class AuthenticationServiceFactory implements FactoryInterface
             ->setTableName('User')
             ->setIdentityColumn('email')
             ->setCredentialColumn('password')
+
         ;
 
         $storage = $serviceLocator->get('User\Service\AuthenticationStorage');
