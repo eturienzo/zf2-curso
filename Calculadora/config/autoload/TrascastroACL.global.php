@@ -16,6 +16,7 @@ return [
             'guest',
             'user',
             'admin',
+            'moderator'
         ],
         'forbidden' => [
             'controller'    => 'User\Controller\Users',

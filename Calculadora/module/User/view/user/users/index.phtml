@@ -28,5 +28,9 @@
 </div>
 
 <div>
-    <p><a href="<?php echo $this->url('user\users\create') ?>">Create a new User</a> | <a href="<?php echo $this->url('user\login\logout') ?>">Logout</a> </p>
+    <?php if ($this->layout()->tacl->isAllowed($this->identity()->role, 'user\users\create')): ?>
+        <p><a href="<?php echo $this->url('user\users\create') ?>">Create a new User</a></p>
+    <?php endif; ?>
+    <p><a href="<?php echo $this->url('bookmark\account\index') ?>">Bookmarks</a> | <a href="<?php echo $this->url('user\login\logout') ?>">Logout</a> </p>
 </div>
+
