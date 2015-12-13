@@ -14,14 +14,14 @@
  * file that was distributed with this source code.
  */
 
-namespace MyString\Controller\Factory;
+namespace User\Controller\Factory;
 
 
-use MyString\Controller\MyStringController;
+use User\Controller\UsersRESTController;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class MyStringControllerFactory implements FactoryInterface
+class UsersRESTControllerFactory implements FactoryInterface
 {
 
     /**
@@ -34,10 +34,9 @@ class MyStringControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $sm = $serviceLocator->getServiceLocator();
+        $model = $sm->get('User\Model\UsersModel');
+        $form = $sm->get('User\Form\User');
 
-        $model = $sm->get('MyString\Model\MyString');
-
-        return new MyStringController($model);
+        return new UsersRESTController($model, $form);
     }
-
 }

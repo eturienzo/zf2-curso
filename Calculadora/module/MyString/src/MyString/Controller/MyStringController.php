@@ -1,15 +1,24 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: elena
- * Date: 08/04/2015
- * Time: 18:18
+ * xenFramework (http://xenframework.com/)
+ *
+ * This file is part of the xenframework package.
+ *
+ * (c) Ismael Trascastro <itrascastro@xenframework.com>
+ *
+ * @link        http://github.com/xenframework for the canonical source repository
+ * @copyright   Copyright (c) xenFramework. (http://xenframework.com)
+ * @license     MIT License - http://en.wikipedia.org/wiki/MIT_License
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace MyString\Controller;
-use Zend\Mvc\Controller\AbstractActionController;
+
+
 use MyString\Model\MyStringModel;
-use Zend\View\Model\ViewModel;
+use Zend\Mvc\Controller\AbstractActionController;
 
 class MyStringController extends AbstractActionController
 {
@@ -21,65 +30,50 @@ class MyStringController extends AbstractActionController
     /**
      * @param MyStringModel $model
      */
-    public function __construct(MyStringModel $model)
+    function __construct(MyStringModel $model)
     {
         $this->model = $model;
     }
 
+
     public function indexAction()
     {
-        $title = $this->layout()->getVariable('title');
-        $newTitle = $title . ' - MyString Home';
-        $this->layout()->setVariable('title', $newTitle);
-        return ['title' => $newTitle];
+        return [];
     }
-    public function concatenarAction()
+
+    public function concatenateAction()
     {
-        $title = $this->layout()->getVariable('title');
-        $newTitle = $title . ' - MyString Concatenar';
-        $this->layout()->setVariable('title', $newTitle);
-        return ['title' => $newTitle];
+        return ['title' => 'Concatenate'];
     }
-    public function concatenarDoAction()
+
+    public function doConcatenateAction()
     {
-        $this->model->setStr1($this->params()->fromPost('str1'));
-        $this->model->setStr2($this->params()->fromPost('str2'));
-        $this->model->concatenar();
-        $title = $this->layout()->getVariable('title');
-        $newTitle = $title . ' - MyString Concatenar Resultado';
-        $this->layout()->setVariable('title', $newTitle);
-        $view = new ViewModel();
-        $view->setTemplate('my-string/my-string/result.phtml');
+        $this->model->setCad1($this->params()->fromPost('cad1'));
+        $this->model->setCad2($this->params()->fromPost('cad2'));
 
-        $result = $this->AddPrefix($this->model->getResult());
+        $this->model->concatenate();
 
-        $view->result = $result;
+        return ['result' => $this->model->getResult()];
 
-        return $view;
     }
 
-    public function subcadenaAction()
+    public function findAction()
     {
-        $title = $this->layout()->getVariable('title');
-        $newTitle = $title . ' - MyString Subcadena';
-        $this->layout()->setVariable('title', $newTitle);
-        return ['title' => $newTitle];
+        return ['title' => 'Find'];
     }
 
-    public function subcadenaDoAction()
+    public function doFindAction()
     {
-        $this->model->setStr1($this->params()->fromPost('str1'));
-        $this->model->setStr2($this->params()->fromPost('str2'));
-        $this->model->subcadena();
-        $title = $this->layout()->getVariable('title');
-        $newTitle = $title . ' - MyString Subcadena Resultado';
-        $this->layout()->setVariable('title', $newTitle);
-        $view = new ViewModel();
-        $view->setTemplate('my-string/my-string/result.phtml');
-        $view->result = $this->model->getResult();
+        $this->model->setCad1($this->params()->fromPost('cad1'));
+        $this->model->setCad2($this->params()->fromPost('cad2'));
 
-        return $view;
-//        return ['result' => $this->model->getResult(), 'title' => $newTitle];
+        $this->model->find();
+
+        $find = $this->model->getResult();
+
+        $result = ($find !== false) ? $this->model->getCad1() . ' is in ' . $this->model->getCad2() : 'Not found';
+
+        return ['result' => $result];
+
     }
-
 }

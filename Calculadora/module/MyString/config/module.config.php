@@ -8,16 +8,10 @@
  */
 
 return array(
-    'MyString' => array(
-        'prefix' => 10,
-    ),
-    'applicationMyString' => array(
-        'name'=> 'MyString App',
-    ),
     'router' => array(
         'routes' => array(
-            'my-string_home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'myString\myString\index' => array(
+                'type' => 'Literal',
                 'options' => array(
                     'route'    => '/my-string/',
                     'defaults' => array(
@@ -26,43 +20,43 @@ return array(
                     ),
                 ),
             ),
-            'MyString_MyString_Concatenar' => array(
+            'myString\myString\concatenate' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/my-string/concatenar/',
+                    'route'    => '/my-string/concatenate/',
                     'defaults' => array(
                         'controller' => 'MyString\Controller\MyString',
-                        'action' => 'concatenar',
+                        'action'     => 'concatenate',
                     ),
                 ),
             ),
-            'MyString_MyString_ConcatenarDo' => array(
+            'myString\myString\doConcatenate' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/my-string/concatenar-do/',
+                    'route'    => '/my-string/do-concatenate/',
                     'defaults' => array(
                         'controller' => 'MyString\Controller\MyString',
-                        'action' => 'concatenarDo',
+                        'action'     => 'doConcatenate',
                     ),
                 ),
             ),
-            'MyString_MyString_Subcadena' => array(
+            'myString\myString\find' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/my-string/subcadena/',
+                    'route'    => '/my-string/find/',
                     'defaults' => array(
                         'controller' => 'MyString\Controller\MyString',
-                        'action' => 'subcadena',
+                        'action'     => 'find',
                     ),
                 ),
             ),
-            'MyString_MyString_SubcadenaDo' => array(
+            'myString\myString\doFind' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/my-string/subcadena-do/',
+                    'route'    => '/my-string/do-find/',
                     'defaults' => array(
                         'controller' => 'MyString\Controller\MyString',
-                        'action' => 'subcadenaDo',
+                        'action'     => 'doFind',
                     ),
                 ),
             ),
@@ -70,57 +64,20 @@ return array(
     ),
     'service_manager' => array(
         'invokables' => array(
-            'MyString\Model\MyString' => 'MyString\Model\MyStringModel',
+            'MyString\Model\MyString' => 'MyString\Model\MyStringModel'
         ),
     ),
-
     'controllers' => array(
-        'invokables' => array(
-            //'MyString\Controller\Index' => 'MyString\Controller\IndexController'
-        ),
         'factories' => array(
-            'MyString\Controller\MyString' =>
-                'MyString\Controller\Factory\MyStringControllerFactory',
+            'MyString\Controller\MyString' => 'MyString\Controller\Factory\MyStringControllerFactory',
         ),
     ),
-    'controller_plugins' => array(
-        'factories' => array(
-            'AddPrefix' => 'MyString\Controller\Plugin\Factory\AddPrefixPluginFactory',
-        ),
-    ),
-
     'view_manager' => array(
-        'display_not_found_reason' => true,
-        'display_exceptions'       => true,
-        'doctype'                  => 'HTML5',
-        'not_found_template'       => 'error/404',
-        'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'             => __DIR__ . '/../view/layout/layout.phtml',
-            'my-string/layout/header'  => __DIR__ . '/../view/layout/header.phtml',
-            'my-string/layout/footer'  => __DIR__ . '/../view/layout/footer.phtml',
-            'my-string/partial/menu'   => __DIR__ . '/../view/my-string/my-string/partial/menu.phtml',
+            //'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
         ),
-     //   'template_map' => array(
-      //      'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-       //     'my-string/index/index' => __DIR__ . '/../view/my-string/index/index.phtml',
-       //     'error/404'               => __DIR__ . '/../view/error/404.phtml',
-       //     'error/index'             => __DIR__ . '/../view/error/index.phtml',
-       // ),
         'template_path_stack' => array(
             __DIR__ . '/../view',
-        ),
-    ),
-    'view_helpers' => array(
-        'invokables' => array(
-            'formHelper' => 'MyString\View\Helper\FormHelper',
-        ),
-    ),
-    // Placeholder for console routes
-    'console' => array(
-        'router' => array(
-            'routes' => array(
-            ),
         ),
     ),
 );

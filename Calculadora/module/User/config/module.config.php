@@ -2,6 +2,30 @@
 return array(
     'router' => array(
         'routes' => array(
+            'user\usersREST' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/users-rest/',
+                    'defaults' => array(
+                        'controller' => 'User\Controller\UsersREST',
+                    ),
+                ),
+                'may_terminate' => true, // parent route can be alone
+                'child_routes' => array(
+                    'withID' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => 'id/[:id]/',
+                            'constraints' => array(
+                                'id' => '[0-9]+',
+                            ),
+                            'defaults' => array(
+                                // Same as parent. We can also avoid this 'defaults' key
+                            ),
+                        ),
+                    ),
+                ),
+            ),
             'user\users\index' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -10,6 +34,21 @@ return array(
                         'controller' => 'User\Controller\Users',
                         'action'     => 'index',
                         'roles'      => ['admin', 'user'],
+                    ),
+                ),
+                'may_terminate' => true, // parent route can be alone
+                'child_routes' => array(
+                    'paginator' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => 'page/[:page]/',
+                            'constraints' => array(
+                                'page' => '[0-9]+',
+                            ),
+                            'defaults' => array(
+                                // Same as parent. We can also avoid this 'defaults' key
+                            ),
+                        ),
                     ),
                 ),
             ),
@@ -73,7 +112,7 @@ return array(
                     'defaults' => array(
                         'controller' => 'User\Controller\Users',
                         'action'     => 'update',
-                        'roles'      => ['admin', 'moderator'],
+                        'roles'      => ['admin'],
                     ),
                 ),
             ),
@@ -134,13 +173,13 @@ return array(
             'User\Form\User'                        => 'User\Form\Factory\UserFormFactory',
             'User\Form\Login'                       => 'User\Form\Factory\LoginFormFactory',
             'User\Service\Acl'                      => 'User\Service\Factory\AclServiceFactory',
-            'User\Provider\RoleProvider'            => 'User\Provider\Factory\RoleProviderFactory',
         ),
     ),
     'controllers' => array(
         'factories' => array(
-            'User\Controller\Users' => 'User\Controller\Factory\UsersControllerFactory',
-            'User\Controller\Login' => 'User\Controller\Factory\LoginControllerFactory',
+            'User\Controller\Users'         => 'User\Controller\Factory\UsersControllerFactory',
+            'User\Controller\Login'         => 'User\Controller\Factory\LoginControllerFactory',
+            'User\Controller\UsersREST'     => 'User\Controller\Factory\UsersRESTControllerFactory',
         ),
     ),
     'view_manager' => array(
@@ -149,5 +188,8 @@ return array(
         'template_path_stack'       => array(
             __DIR__ . '/../view',
         ),
+          'ViewJsonStrategy',
+            'strategies'                => array(
+            ),
     ),
 );

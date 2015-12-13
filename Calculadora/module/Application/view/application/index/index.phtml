@@ -1,44 +1,222 @@
 <div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
+    <h1><span class="zf-green">ZF2 Course</span> by Ismael Trascastro</h1>
+    <p>In this course you will practice with the main components of Zend Framework in order to achieve a solid knowledge of the framework</p>
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-success btn-lg" href="https://bitbucket.org/itrascastro/zf2-course">Bitbucket</a>
+            <a class="btn btn-primary btn-lg" href="https://github.com/itrascastro">GitHub</a>
+            <a class="btn btn btn-info btn-lg" href="https://twitter.com/trascastro">Twitter</a>
+            <a class="btn btn-danger btn-lg" href="https://www.youtube.com/watch?v=OKot73E8uh4&list=PLI-8Ih7owqqcoiKCFemhKaAgBgOtZJ367">Youtube</a></div>
+    </div>
 </div>
 
 <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Follow Development') ?></h3>
+                <h3 class="panel-title">Session 1 - Modules</h3>
             </div>
             <div class="panel-body">
-                <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="https://github.com/zendframework/zf2/issues">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
+                <ul>
+                    <li>Installation</li>
+                    <li>Directory Structure</li>
+                    <li>Configuration</li>
+                    <li>Module Creation</li>
+                    <li>Dependency Injection</li>
+                    <li>Calculator Module</li>
+                </ul>
+                <p><a class="btn btn-success pull-left" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-1">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger pull-right" href="http://youtu.be/OKot73E8uh4">Video &raquo;</a></p>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Discover Modules') ?></h3>
+                <h3 class="panel-title">Session 2 - Modules II</h3>
             </div>
             <div class="panel-body">
-                <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
+                <ul>
+                    <li>Factories</li>
+                    <li>Service Manager</li>
+                    <li>Inversion of Control</li>
+                    <li>Module.php to reuse code</li>
+                    <li>Exercise: MyString</li>
+                </ul>
+                <p><a class="btn btn-success pull-left" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-2">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger pull-right" href="http://youtu.be/1Oe8Fm2bGII">Video &raquo;</a></p>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Help &amp; Support') ?></h3>
+                <h3 class="panel-title">Session 3 - MVC</h3>
             </div>
             <div class="panel-body">
-                <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
+                <ul>
+                    <li>Layouts</li>
+                    <li>Layout Variables</li>
+                    <li>onBootstrap</li>
+                    <li>Using View Helpers</li>
+                    <li>Partial View Helper</li>
+                    <li>Creating View Helpers</li>
+                    <li>Sharing Views in Actions</li>
+                    <li>Different layouts per module</li>
+                    <li>Static Content Allocation</li>
+                    <li>When Creating Modules</li>
+                    <li>Controller Plugins</li>
+                    <li>Creating Controller Plugins</li>
+                    <li>Zend Tool</li>
+                    <li>Exercise: MyString</li>
+                </ul>
+                <p><a class="btn btn-success pull-left" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-3">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger pull-right" href="http://youtu.be/FqxQBcj-ff0">Video &raquo;</a></p>
             </div>
         </div>
     </div>
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Session 4 - Database PDO</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>DB Configuration</li>
+                    <li>Entity Creation</li>
+                    <li>PDO</li>
+                    <li>DAO Model</li>
+                    <li>CRUD Users</li>
+                </ul>
+                <p><a class="btn btn-success col-lg-pull-0" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-4">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger col-lg-pull-1" href="http://youtu.be/Mu5v113YAT0">Video1 &raquo;</a></p>
+                <p><a class="btn btn-danger col-lg-pull-2" href="http://youtu.be/IH9AL_yXpJI">Video2 &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Session 5 - TableGateway</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>TableGateway Configuration</li>
+                    <li>Entity exchangeArray</li>
+                    <li>DAO Model</li>
+                    <li>CRUD Users</li>
+                    <li>Zend\Db\Sql</li>
+                    <li>Exercise: Bookmarks CRUD</li>
+                </ul>
+                <p><a class="btn btn-success pull-left" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-5">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger pull-right" href="http://youtu.be/m1jf6vj6cis">Video &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Session 6 - Zend\Form</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>Creating Forms</li>
+                    <li>Form Filters</li>
+                    <li>Form Validators</li>
+                    <li>Using Forms in Controllers</li>
+                    <li>Form View Helpers</li>
+                    <li>Refactoring User Forms</li>
+                </ul>
+                <p><a class="btn btn-success pull-left" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-6">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger pull-right" href="http://youtu.be/5viGByLUe0E">Video &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Session 7 - Authentication</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>Authentication Service</li>
+                    <li>Auth Adapter</li>
+                    <li>Auth Storage</li>
+                    <li>Login Controller</li>
+                    <li>Login Form</li>
+                    <li>Login View</li>
+                    <li>ACL EVENT_ROUTE</li>
+                </ul>
+                <p><a class="btn btn-success pull-left" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-7">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger pull-right" href="http://youtu.be/laXMF9QYs-I">Video &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Session 8 - ACL</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>ACL Service Factory</li>
+                    <li>Using ACL in EVENT_ROUTE</li>
+                    <li>ACL in Views</li>
+                    <li>ACL in Controllers</li>
+                    <li>Exercise: ACL in Bookmarks</li>
+                </ul>
+                <p><a class="btn btn-success pull-left" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-8">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger pull-right" href="http://youtu.be/Szd1wQTT0I0">Video &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Session 9 - Pagination</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>Zend\Paginator</li>
+                    <li>Exercise: Bookmarks App I</li>
+                </ul>
+                <p><a class="btn btn-success pull-left" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-9">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger pull-right" href="http://youtu.be/du9Gn7RNLuU">Video &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Session 10 - Ajax</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>AJAX CRUD</li>
+                    <li>Exercise: Bookmarks App II</li>
+                </ul>
+                <p><a class="btn btn-success pull-left" href="https://bitbucket.org/itrascastro/zf2-course/src/?at=session-10">Source code &raquo;</a></p>
+                <p><a class="btn btn-danger pull-right" href="http://youtu.be/laXMF9QYs-I">Video &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -14,30 +14,32 @@
  * file that was distributed with this source code.
  */
 
-namespace MyString\Controller\Factory;
+namespace Calculator\Controller\Plugin;
 
 
-use MyString\Controller\MyStringController;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\Mvc\Controller\Plugin\AbstractPlugin;
 
-class MyStringControllerFactory implements FactoryInterface
+class PrependZerosPlugin extends AbstractPlugin
 {
-
     /**
-     * Create service
-     *
-     * @param ServiceLocatorInterface $serviceLocator
-     *
-     * @return mixed
+     * @var int The number of 0's to prepend
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    private $digits;
+
+    public function __construct($digits)
     {
-        $sm = $serviceLocator->getServiceLocator();
-
-        $model = $sm->get('MyString\Model\MyString');
-
-        return new MyStringController($model);
+        $this->digits = $digits;
     }
 
+    /**
+     * __invoke
+     *
+     * @param int $number The number to prepend zeros in
+     *
+     * @return string
+     */
+    public function __invoke($number)
+    {
+        return sprintf('%0' . $this->digits . 'd', $number);
+    }
 }

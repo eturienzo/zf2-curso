@@ -1,74 +1,91 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: elena
- * Date: 08/04/2015
- * Time: 17:21
+ * xenFramework (http://xenframework.com/)
+ *
+ * This file is part of the xenframework package.
+ *
+ * (c) Ismael Trascastro <itrascastro@xenframework.com>
+ *
+ * @link        http://github.com/xenframework for the canonical source repository
+ * @copyright   Copyright (c) xenFramework. (http://xenframework.com)
+ * @license     MIT License - http://en.wikipedia.org/wiki/MIT_License
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace MyString\Model;
+
+
 class MyStringModel
 {
-    /**
-     * @var int
-     */
-    private $str1;
-    /**
-     * @var int
-     */
-    private $str2;
-    /**
-     * @var int
-     */
+    private $cad1;
+    private $cad2;
     private $result;
-    public function __construct()
+
+    function __construct($cad1 = null, $cad2 = null, $result = null)
     {
-        $this->result = "";
+        $this->cad1 = $cad1;
+        $this->cad2 = $cad2;
+        $this->result = $result;
     }
 
-    public function concatenar()
+    /**
+     * @return mixed
+     */
+    public function getCad1()
     {
-        $this->result = $this->str1 . $this->str2;
-    }
-    public function subcadena()
-    {
-        $this->result ="";
-        if (strpos($this->str1,$this->str2)=== false)
-        $this->result = "La cadena '$this->str2' no fue encontrada en la cadena '$this->str1'";
-      else
-          $this->result = "La cadena '$this->str2' fue encontrada en la cadena '$this->str1'";
+        return $this->cad1;
     }
 
+    /**
+     * @param mixed $cad1
+     */
+    public function setCad1($cad1)
+    {
+        $this->cad1 = $cad1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCad2()
+    {
+        return $this->cad2;
+    }
+
+    /**
+     * @param mixed $cad2
+     */
+    public function setCad2($cad2)
+    {
+        $this->cad2 = $cad2;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getResult()
     {
         return $this->result;
     }
+
     /**
-     * @param string $str1
+     * @param mixed $result
      */
-    public function setStr1($str1)
+    public function setResult($result)
     {
-        $this->str1 = $str1;
+        $this->result = $result;
     }
-    /**
-     * @return string
-     */
-    public function getStr1()
+
+    public function concatenate()
     {
-        return $this->str1;
+        $this->result = $this->cad1 . $this->cad2;
     }
-    /**
-     * @param strin $str2
-     */
-    public function setStr2($str2)
+
+    public function find()
     {
-        $this->str2 = $str2;
+        $this->result = strpos($this->cad2, $this->cad1);
     }
-    /**
-     * @return string
-     */
-    public function getStr2()
-    {
-        return $this->str2;
-    }
+
 }

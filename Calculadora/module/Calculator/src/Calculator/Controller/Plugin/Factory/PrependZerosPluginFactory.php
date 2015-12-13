@@ -14,14 +14,14 @@
  * file that was distributed with this source code.
  */
 
-namespace MyString\Controller\Factory;
+namespace Calculator\Controller\Plugin\Factory;
 
 
-use MyString\Controller\MyStringController;
+use Calculator\Controller\Plugin\PrependZerosPlugin;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
-class MyStringControllerFactory implements FactoryInterface
+class PrependZerosPluginFactory implements FactoryInterface
 {
 
     /**
@@ -34,10 +34,9 @@ class MyStringControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $sm = $serviceLocator->getServiceLocator();
+        $config = $sm->get('config');
+        $digits = $config['Calculator']['zeroes'];
 
-        $model = $sm->get('MyString\Model\MyString');
-
-        return new MyStringController($model);
+        return new PrependZerosPlugin($digits);
     }
-
 }

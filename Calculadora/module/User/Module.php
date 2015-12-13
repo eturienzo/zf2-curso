@@ -23,7 +23,6 @@ class Module implements AutoloaderProviderInterface
         $moduleRouteListener->attach($eventManager);
 
         $eventManager->attach(MvcEvent::EVENT_ROUTE, array($this, 'routeHandler'), -100);
-
     }
 
     public function routeHandler(MvcEvent $event)
@@ -40,16 +39,14 @@ class Module implements AutoloaderProviderInterface
         /**
          * @var Acl $acl
          */
-//        $acl = $sm->get('User\Service\Acl');
-        $acl = $sm->get('TrascastroACL');
-
+        $acl = $sm->get('User\Service\Acl');
 
         $role = ($identity = $authenticationService->getIdentity()) ? $identity->role : 'guest';
 
         if (!$acl->isAllowed($role, $match->getMatchedRouteName())) {
             $response = $event->getResponse();
             $response->setStatusCode(401); // Auth required
-            $match->setParam('controller', 'User\Controller\Users');
+            $match->setParam('controller', 'User\Controller\Login');
             $match->setParam('action', 'forbidden');
         }
 

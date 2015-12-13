@@ -2,6 +2,30 @@
 return array(
     'router' => array(
         'routes' => array(
+            'bookmark\bookmarksREST' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/bookmarks-rest/',
+                    'defaults' => array(
+                        'controller' => 'Bookmark\Controller\BookmarksREST',
+                    ),
+                ),
+                'may_terminate' => true, // parent route can be alone
+                'child_routes' => array(
+                    'withID' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => 'id/[:id]/',
+                            'constraints' => array(
+                                'id' => '[0-9]+',
+                            ),
+                            'defaults' => array(
+            // Same as parent. We can also avoid this 'defaults' key
+                            ),
+                        ),
+                    ),
+                ),
+            ),
             'bookmark\account\index' => array(
                 'type' => 'Literal',
                 'options' => array(
@@ -100,8 +124,10 @@ return array(
         'factories' => array(
     //        'Bookmark\Controller\Account' => 'Bookmark\Controller\Factory\AccountControllerFactory',
             'Bookmark\Controller\Account' => 'Bookmark\Controller\Factory\AccountControllerTableGatewayFactory',
+            'Bookmark\Controller\BookmarksREST' => 'Bookmark\Controller\Factory\BookmarksRESTControllerFactory',
         ),
     ),
+
     'view_manager' => array(
         'template_map'              => array(
             'bookmark/account/partial/form-update' => __DIR__ . '/../view/bookmark/account/partial/form-update.phtml',
@@ -109,6 +135,9 @@ return array(
         ),
         'template_path_stack'       => array(
             __DIR__ . '/../view',
+        ),
+        'strategies' => array(
+            'ViewJsonStrategy',
         ),
     ),
 );

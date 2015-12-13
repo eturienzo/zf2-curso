@@ -58,8 +58,7 @@ class LoginController extends AbstractActionController
 
     public function loginAction()
     {
-        //$acl = $this->serviceLocator->get('User\Service\Acl');
-        $acl = $this->serviceLocator->get('TrascastroACL');
+        $acl = $this->serviceLocator->get('User\Service\Acl');
 
         if ($this->identity()) {
             return $this->redirect()->toRoute('user\users\index');
@@ -136,5 +135,10 @@ class LoginController extends AbstractActionController
         $this->flashMessenger()->addMessage('Logged Out');
 
         return $this->redirect()->toRoute('user\login\login');
+    }
+
+    public function forbiddenAction()
+    {
+        return [];
     }
 }
